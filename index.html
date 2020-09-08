@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>To Do List</title>
+        <script
+            src="https://kit.fontawesome.com/8594ac36cc.js"
+            crossorigin="anonymous"
+        ></script>
+        <link rel="stylesheet" href="style.css" />
+        <script src="main.js" defer></script>
+    </head>
+    <body>
+        <h1>My plan</h1>
+        <div class="content">
+            <div class="content__left">
+                <table id="calendar">
+                    <thead>
+                        <tr class="calendar__button">
+                            <td>
+                                <label class="prev"> &#60; </label>
+                            </td>
+                            <td
+                                class="calendar__current-year-month"
+                                colspan="5"
+                            ></td>
+                            <td>
+                                <label class="next"> &#62; </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="sun">Sun</td>
+                            <td>Mon</td>
+                            <td>Tue</td>
+                            <td>Wed</td>
+                            <td>Thu</td>
+                            <td>Fri</td>
+                            <td class="sat">Sat</td>
+                        </tr>
+                    </thead>
+                    <tbody id="calendar__body" class="calendar__body"></tbody>
+                </table>
+            </div>
+            <div class="content__right">
+                <h2>Add plan</h2>
+                <input
+                    type="text"
+                    class="add__input"
+                    placeholder="please write here"
+                />
+                <button class="add__button">
+                    <i class="fas fa-plus"></i>
+                </button>
+                <div class="add__item"></div>
+            </div>
+        </div>
+
+        <section class="todaypercent"></section>
+        <!-- https://medium.com/@wooder2050/%EB%B0%94%EB%8B%90%EB%9D%BC%EC%BD%94%EB%94%A9-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A1%9C-%EB%8B%AC%EB%A0%A5-calendar-todo-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-f635ef8cce76 -->
+    </body>
+</html>

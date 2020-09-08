@@ -1,0 +1,108 @@
+/* global */
+:root {
+    /* color */
+    --color-white: #ffffff;
+    --color-light-white: #eeeeee;
+    --color-dark-white: #bdbdbd;
+    --color-dark-grey: #353535;
+    --color-grey: #616161;
+    --color-light-grey: #c2c2c2;
+    --color-yellow: #fffebd;
+    --color-red: #ff4f4f;
+    --color-blue: #4e4eff;
+    --color-black: #000000;
+
+    /* Font size */
+    --font-large: 48px;
+    --font-medium: 28px;
+    --font-regular: 18px;
+    --font-small: 16px;
+    --font-micro: 14px;
+
+    /* Font weight */
+    --weight-bold: 700;
+    --weight-semi-bold: 600;
+    --weight-regular: 400;
+}
+
+/* univisal tags */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+/* Content */
+.content {
+    width: 1000px;
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+/* Content_left */
+.content__left {
+    width: 50%;
+}
+
+/* Calendar */
+#calendar {
+    width: 90%;
+    text-align: center;
+    font-weight: var(--weight-bold);
+    margin: auto;
+    border-radius: 4px;
+    background-color: var(--color-yellow);
+}
+
+.sun {
+    color: var(--color-red);
+}
+
+.sat {
+    color: var(--color-blue);
+}
+
+/* Content_right */
+.content__right {
+    width: 50%;
+}
+
+/* Add */
+.add__input {
+    width: 300px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid var(--color-light-grey);
+}
+
+.add__input::placeholder {
+    color: var(--color-light-white);
+}
+
+.add__button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--color-light-grey);
+    background-color: var(--color-yellow);
+}
+
+.add__button i {
+    color: var(--color-light-grey);
+}
