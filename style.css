@@ -37,6 +37,17 @@ body {
 
 h1 {
     text-align: center;
+    color: var(--color-dark-grey);
+}
+
+h2 {
+    color: var(--color-dark-grey);
+}
+
+td {
+    width: 40px;
+    height: 40px;
+    font-size: var(--font-regular);
 }
 
 button {
@@ -64,8 +75,9 @@ button {
     width: 90%;
     text-align: center;
     font-weight: var(--weight-bold);
+    padding: 6px;
     margin: auto;
-    border-radius: 4px;
+    border-radius: 8px;
     background-color: var(--color-yellow);
 }
 
@@ -80,6 +92,9 @@ button {
 /* Content_right */
 .content__right {
     width: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Add */
@@ -105,4 +120,74 @@ button {
 
 .add__button i {
     color: var(--color-light-grey);
+}
+
+.add__item {
+    height: 200px;
+    overflow-y: auto;
+}
+
+.add__item-list {
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px;
+    margin: auto;
+}
+
+.add__item-list.checked > .todo {
+    text-decoration: line-through;
+}
+
+.add__item-list span {
+    color: var(--color-dark-grey);
+    font-size: var(--font-micro);
+    transition: all 300ms ease-out;
+    cursor: pointer;
+}
+
+.fa-trash-alt:hover {
+    color: var(--color-red);
+    transform: scale(1.1);
+}
+
+/* todaypercent */
+.todaypercent {
+    width: 950px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 20px;
+    margin: auto;
+    margin-top: 20px;
+    background-color: var(--color-dark-white);
+}
+
+.todaypercent > p {
+    font-size: var(--font-regular);
+    font-weight: var(--weight-semi-bold);
+}
+
+.rate-description {
+    width: 34%;
+    text-align: center;
+}
+
+.rate-bar {
+    width: 56%;
+    height: 3px;
+    background-color: var(--color-grey);
+}
+
+.rate-value {
+    width: 50%;
+    height: 3px;
+    background-color: var(--color-yellow);
+}
+
+.percent {
+    width: 10%;
+    text-align: center;
 }

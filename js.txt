@@ -1,0 +1,206 @@
+// const currentTitle = document.querySelector(".calendar__current-year-month");
+// const calendarBody = document.querySelector(".calendar__body");
+// let today = new Date();
+// const first = new Date(today.getFullYear(), today.getMonth(), 1);
+// const dayList = [
+//     "Sunday",
+//     "Monday",
+//     "Tuesday",
+//     "Wednesday",
+//     "Thursday",
+//     "Friday",
+//     "Saturday",
+// ];
+// const monthList = [
+//     "January",
+//     "February",
+//     "March",
+//     "April",
+//     "May",
+//     "June",
+//     "July",
+//     "August",
+//     "September",
+//     "October",
+//     "November",
+//     "December",
+// ];
+// const leapYear = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+// const notLeapYear = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+// const pageFirst = first;
+// let pageYear;
+// if (first.getFullYear() % 4 === 0) {
+//     pageYear = leapYear;
+// } else {
+//     pageYear = notLeapYear;
+// }
+
+// function showCalendar() {
+//     let monthCnt = 100;
+//     let cnt = 1;
+//     for (let i = 0; i < 6; i++) {
+//         let tr = document.createElement("tr");
+//         tr.setAttribute("class", monthCnt);
+//         for (let j = 0; j < 7; j++) {
+//             if (
+//                 (i === 0 && j < first.getDay()) ||
+//                 cnt > pageYear[first.getMonth()]
+//             ) {
+//                 let td = document.createElement("td");
+//                 tr.appendChild(td);
+//             } else {
+//                 let td = document.createElement("td");
+//                 td.textContent = cnt;
+//                 td.setAttribute("class", cnt);
+//                 tr.appendChild(td);
+//                 cnt++;
+//             }
+//         }
+//         monthCnt++;
+//         calendarBody.appendChild(tr);
+//     }
+// }
+
+// showCalendar();
+
+// function removeCalendar() {
+//     let catchTr = 100;
+//     for (let i = 100; i < 106; i++) {
+//         let tr = document.getElementById(catchTr);
+//         tr.remove();
+//         catchTr++;
+//     }
+// }
+
+// // const input = document.querySelector('.add__input');
+
+// // function prev() {
+// //     input.value = "";
+// //     const additem = document.
+// // }
+
+const prev = document.querySelector(".prev");
+const next = document.querySelector(".next");
+
+// let date = new Date();
+
+prev.addEventListener("click", () => {
+    prevMonth();
+});
+
+next.addEventListener("click", () => {
+    nextMonth();
+});
+
+// function beforeMonth() {
+//     today = new Date(
+//         today.getFullYear(),
+//         today.getMonth() - 1,
+//         today.getDate()
+//     );
+//     currentMonth();
+// }
+
+// function afterMonth() {
+//     today = new Date(
+//         today.getFullYear(),
+//         today.getMonth() + 1,
+//         today.getDate()
+//     );
+//     currentMonth();
+// }
+
+// function currentMonth() {
+//     let currentMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+//     let lastDate = new Date(today.getFullYear(), today.getMonth + 1, 0);
+//     const calendar = document.querySelector("#calendar");
+//     const calendarCurrentYearMonth = document.querySelector(
+//         ".calendar__current-year-month"
+//     );
+//     calendarCurrentYearMonth.innerHTML = `${today.getFullYear()}년 ${
+//         today.getMonth() + 1
+//     }월`;
+// }
+let today = new Date();
+
+let todayYear = today.getFullYear();
+let todayMonth = today.getMonth() + 1;
+console.log(todayMonth);
+let calendar = document.getElementById("calendar");
+
+function buildCalendar() {
+    let firstDate = new Date(todayYear, todayMonth - 1, 1);
+    let lastDate = new Date(todayYear, todayMonth, 0);
+    let day = firstDate.getDay();
+    let week = Math.ceil(lastDate.getDate() / 7) + 1;
+    let today_yearMonth = todayYear + " - " + todayMonth;
+    let leftDays = 7; // setDays 와 반비례
+    let setDays = 1; // leftDays 와 반비례
+    let nextMonthDate = 1;
+    console.log(lastDate);
+    for (i = 1; i < week; i++) {
+        let row = calendar.insertRow();
+        while (day != 0) {
+            row.insertCell().innerHTML = "";
+            day -= 1;
+            leftDays -= 1;
+        } // 1주
+        while (leftDays != 0) {
+            if (setDays > lastDate.getDate()) {
+                row.insertCell().innerHTML = nextMonthDate;
+                leftDays -= 1;
+                nextMonthDate += 1;
+            } else {
+                row.insertCell().innerHTML = setDays;
+                setDays += 1;
+                leftDays -= 1;
+            }
+        }
+        leftDays = 7;
+    }
+    setDays -= 1;
+    if (setDays != lastDate.getDate()) {
+        let row = calendar.insertRow();
+        while (setDays != lastDate.getDate()) {
+            setDays++;
+            leftDays--;
+            row.insertCell().innerHTML = setDays;
+        }
+        while (leftDays != 0) {
+            row.insertCell().innerHTML = nextMonthDate;
+            nextMonthDate++;
+            leftDays--;
+        }
+    }
+    document.querySelector(
+        ".calendar__current-year-month"
+    ).innerHTML = today_yearMonth;
+}
+buildCalendar();
+
+function deleteCalendar() {
+    while (calendar.rows.length > 2) {
+        calendar.deleteRow(2);
+    }
+}
+
+function prevMonth() {
+    todayMonth = todayMonth - 1;
+    if (todayMonth == 0) {
+        todayMonth = 12;
+        todayYear -= 1;
+    }
+    deleteCalendar();
+    today = new Date(todayYear, todayMonth - 1);
+    buildCalendar();
+}
+function nextMonth() {
+    todayMonth += 1;
+    if (todayMonth == 13) {
+        todayMonth = 1;
+        todayYear = todayYear + 1;
+    }
+    deleteCalendar();
+    today = new Date(todayYear, todayMonth - 1);
+    buildCalendar();
+}
